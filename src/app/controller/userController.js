@@ -52,14 +52,14 @@ router.post('/authenticate', async (req,res)=>{
 
         user.password = undefined;
 
-        res.send({
+        return res.send({
             user, 
             token: gereteToken({id: user.id}),
         });
         
         
     } catch (error) {
-        
+        console.log(error);
     }
 })
 
