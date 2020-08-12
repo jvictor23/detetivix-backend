@@ -14,6 +14,7 @@ app.use('/files', express.static(path.resolve(__dirname, '..', 'tmp', 'uploads')
 require('./app/controller/userController')(app);
 require('./app/controller/projectController')(app);
 require('./app/controller/missaoController')(app);
+require('./app/controller/admController')(app);
 
 app.listen(4000);
 

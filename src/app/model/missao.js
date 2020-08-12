@@ -10,17 +10,29 @@ const MissaoSchema = new mongoose.Schema({
 
     resposta:{
         type: String,
-        required: true
+        required: true,
+        select: false
     },
 
     ativa:{
         type: Boolean,
-        default: true
+        default: true,
+        select: false
     },
 
     createdAt:{
         type: Date,
-        default: Date.now
+        default: Date.now,
+        select: false
+    },
+
+    listUser:{
+        type: [],
+        select: false
+    },
+
+    valor:{
+        type: Number
     }
 });
 

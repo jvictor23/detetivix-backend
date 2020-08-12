@@ -92,7 +92,7 @@ router.delete('/deleteimage/:id', async (req, res) => {
 router.post('/authenticate', async (req, res) => {
     const { email, password } = req.body;
 
-    const user = await User.findOne({ email }).select('+password');;
+    const user = await User.findOne({ email }).select('+password');
     try {
 
         if (!user) {
@@ -124,6 +124,7 @@ router.get('/:id', async (req, res) => {
         console.log(error);
     }
 })
+/////////////////////////////////////////////////// Daqui pra baixo é tudo adm
 
 router.get('/all/adm', async (req,res)=>{
     try {
