@@ -16,6 +16,10 @@ require('./app/controller/projectController')(app);
 require('./app/controller/missaoController')(app);
 require('./app/controller/admController')(app);
 
+app.get('/', async(req,res)=>{
+    return res.send("Servidor online");
+})
+
 app.listen(process.env.PORT || 4000);
 
 
