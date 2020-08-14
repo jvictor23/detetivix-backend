@@ -11,7 +11,8 @@ const MissaoSchema = new mongoose.Schema({
     resposta:{
         type: String,
         required: true,
-        select: false
+        select: false,
+        uppercase: true
     },
 
     ativa:{

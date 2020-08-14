@@ -46,7 +46,6 @@ router.post('/', async (req, res) => {
 router.post('/verify', async (req, res) => {
 
     const { resposta, idMissao, idUser, valorMissao } = req.body;
-
     try {
         const missao = await Missao.findOne({ ativa: true, listUser: { $in: [idUser] } })
         if (missao) {
@@ -54,7 +53,7 @@ router.post('/verify', async (req, res) => {
         } else {
 
             const missao = await Missao.findById(idMissao).select("+resposta");
-            if (missao.resposta === resposta) {
+            if (missao.resposta === resposta.toUpperCase()) {
                 await Missao.findByIdAndUpdate(idMissao, { $addToSet: { listUser: idUser } })
                 const user = await User.findById(idUser);
 

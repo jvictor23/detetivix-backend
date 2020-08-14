@@ -8,7 +8,11 @@ const path = require('path');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(cors());
+var corsOptions = {
+    origin: 'https://detetivix.com.br/',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }
+app.use(cors(corsOptions));
 app.use('/files', express.static(path.resolve(__dirname, '..', 'tmp', 'uploads')))
 
 require('./app/controller/userController')(app);
@@ -18,6 +22,6 @@ require('./app/controller/admController')(app);
 
 
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 4000);
 
 
