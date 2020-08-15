@@ -86,4 +86,9 @@ router.post('/close', async (req, res) => {
     }
 })
 
+router.get('/ranking', async(req,res)=>{
+    const ranking = await User.find({type: 'user'}).sort({score: 'descending'}).limit(10);
+    return res.send(ranking);
+})
+
 module.exports = app => app.use('/missao', router);

@@ -6,7 +6,8 @@ const UserSchema = new mongoose.Schema({
     nickname:{
         type: String,
         unique: true,
-        required: true
+        required: true,
+        maxlength: 20
     },
     email:{
         type: String,
@@ -26,7 +27,8 @@ const UserSchema = new mongoose.Schema({
     },
 
     image:{
-        type: String
+        type: String,
+        default: ''
     },
 
     imageKey:{
