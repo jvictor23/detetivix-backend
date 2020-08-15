@@ -4,7 +4,7 @@ const router = express.Router();
 const authMiddleware = require('../middlewares/auth');
 const User = require('../model/user');
 
-router.use(authMiddleware);
+// router.use(authMiddleware);
 
 router.post('/create', async (req, res) => {
     try {
@@ -87,7 +87,7 @@ router.post('/close', async (req, res) => {
 })
 
 router.get('/ranking', async(req,res)=>{
-    const ranking = await User.find({type: 'user'}).sort({score: 'descending'}).limit(10);
+    const ranking = await User.find({type: 'user', score: {$gt : 0}}).sort({score: 'descending'}).limit(10);
     return res.send(ranking);
 })
 
