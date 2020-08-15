@@ -54,7 +54,7 @@ router.post('/verify', async (req, res) => {
 
             const missao = await Missao.findById(idMissao).select("+resposta");
             if (missao.resposta === resposta.toUpperCase()) {
-                await Missao.findByIdAndUpdate(idMissao, { $addToSet: { listUser: idUser } })
+                await Missao.findByIdAndUpdate(idMissao, { $addToSet: { listUser: idUser }, $inc:{valor: -1} })
                 const user = await User.findById(idUser);
 
                 const soma = parseInt(user.score) + parseInt(valorMissao);
